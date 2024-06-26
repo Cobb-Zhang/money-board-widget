@@ -42,7 +42,7 @@ class ListMoneyboardController extends AbstractListController
         $limit = $this->extractLimit($request);
         $offset = $this->extractOffset($request);
 
-        $moneyboardResult = User::skip($offset)->take($limit + 1)->orderBy('money', 'desc')->get();
+        $moneyboardResult = User::skip($offset)->where("email","not like","%@fanruan.com")->take($limit + 1)->orderBy('money', 'desc')->get();
         $hasMoreResults = $limit > 0 && $moneyboardResult->count() > $limit;
 
         if ($hasMoreResults) {
