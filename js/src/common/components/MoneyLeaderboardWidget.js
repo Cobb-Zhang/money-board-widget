@@ -1,11 +1,13 @@
 import Widget from 'flarum/extensions/afrux-forum-widgets-core/common/components/Widget';
 import app from 'flarum/common/app';
 import LoadingIndicator from 'flarum/common/components/LoadingIndicator';
+import MoneyLeaderboardListItem from "./MoneyBoardListItem";
 export default class MyWidget extends Widget {
 
   oninit(vnode) {
     super.oninit(vnode);
     this.maxLoadCount = app.forum.attribute("leaderboardMaxLoadCount") || 10;
+    this.initloadCount = 20;
     this.moneyBoardList ??= [];
     this.totalLoadCount = 0;
     this.moreResults = false;
@@ -17,9 +19,7 @@ export default class MyWidget extends Widget {
 
   oncreate(vnode) {
     super.oncreate(vnode);
-    if (!this.attrs.state.hasLoaded) {
-      setTimeout(this.load.bind(this), this.loadWithInitialResponse ? 0 : 800);
-    }
+    
   }
 
   className() {
@@ -43,19 +43,15 @@ export default class MyWidget extends Widget {
 
   content() {
     // 如果没有加载出来显示这个
-    if (this.attrs.state.isLoading) {
-      return <LoadingIndicator />;
-    }
     let rankID = 0;
+    let loading;
+    if (this.attrs.state.isLoading) {
+      loading =  <LoadingIndicator />;
+    }
+    
     return (
       <div className="cobbz-money-board-widget">
-        <div class="MoneyLeaderboardContainer">
-          <div class="MoneyLeaderboardListTitle">
-            {app.translator.trans("cobbz-money-board-widget.forum.leaderboard-list-title")}
-          </div>
-          {this.additionalInfo && this.additionalInfo.length > 0 && (
-            <p class="MoneyLeaderboardListAdditionalInformation">{this.additionalInfo}</p>
-          )}
+        <div class="MoneyBoardContainer">
 
           <div class="MoneyLeaderboardListHeader">
             <div class="MoneyLeaderboardListHeaderRank">{app.translator.trans("cobbz-money-board-widget.forum.leaderboard-list-rank")}</div>
@@ -75,7 +71,7 @@ export default class MyWidget extends Widget {
             })}
           </ul>
 
-          {!this.loading && this.moneyLeaderboardList.length === 0 && (
+          {/* {!this.attrs.state.isLoading && this.moneyBoardList.length === 0 && (
             <div>
               <div style="font-size:1.4em;color: var(--muted-more-color);text-align: center;height: 300px;line-height: 100px;">{app.translator.trans("cobbz-money-board-widget.forum.leaderboard-list-empty")}</div>
             </div>
@@ -87,7 +83,7 @@ export default class MyWidget extends Widget {
                 {app.translator.trans('cobbz-money-board-widget.forum.leaderboard-load-more')}
               </Button>
             </div>
-          )}
+          )} */}
 
           {loading && <div className="MoneyLeaderboard-loadMore">{loading}</div>}
         </div>

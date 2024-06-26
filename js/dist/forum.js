@@ -2,6 +2,86 @@
 /******/ 	// runtime can't be in strict mode because a global variable is assign and maybe created.
 /******/ 	var __webpack_modules__ = ({
 
+/***/ "./src/common/components/MoneyBoardListItem.js":
+/*!*****************************************************!*\
+  !*** ./src/common/components/MoneyBoardListItem.js ***!
+  \*****************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ MoneyLeaderboardListItem)
+/* harmony export */ });
+/* harmony import */ var _babel_runtime_helpers_esm_inheritsLoose__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/esm/inheritsLoose */ "./node_modules/@babel/runtime/helpers/esm/inheritsLoose.js");
+/* harmony import */ var flarum_Component__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! flarum/Component */ "flarum/Component");
+/* harmony import */ var flarum_Component__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(flarum_Component__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var flarum_components_Link__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! flarum/components/Link */ "flarum/components/Link");
+/* harmony import */ var flarum_components_Link__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(flarum_components_Link__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var flarum_helpers_avatar__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! flarum/helpers/avatar */ "flarum/helpers/avatar");
+/* harmony import */ var flarum_helpers_avatar__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(flarum_helpers_avatar__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var flarum_helpers_username__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! flarum/helpers/username */ "flarum/helpers/username");
+/* harmony import */ var flarum_helpers_username__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(flarum_helpers_username__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var flarum_common_app__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! flarum/common/app */ "flarum/common/app");
+/* harmony import */ var flarum_common_app__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(flarum_common_app__WEBPACK_IMPORTED_MODULE_5__);
+
+
+
+
+
+
+var MoneyLeaderboardListItem = /*#__PURE__*/function (_Component) {
+  function MoneyLeaderboardListItem() {
+    return _Component.apply(this, arguments) || this;
+  }
+  (0,_babel_runtime_helpers_esm_inheritsLoose__WEBPACK_IMPORTED_MODULE_0__["default"])(MoneyLeaderboardListItem, _Component);
+  var _proto = MoneyLeaderboardListItem.prototype;
+  _proto.view = function view() {
+    var _this$attrs = this.attrs,
+      leaderboardListItem = _this$attrs.leaderboardListItem,
+      rankID = _this$attrs.rankID;
+    var moneyName = flarum_common_app__WEBPACK_IMPORTED_MODULE_5___default().forum.attribute('antoinefr-money.moneyname') || '[money]';
+    var moneyValue = leaderboardListItem.attribute("money");
+    // const moneyText = app.forum.attribute('moneyLeaderBoardHideMoneyText') === "1" ? moneyValue : moneyName.replace('[money]', moneyValue);
+    var moneyText = moneyValue;
+    var trophyClass = "MoneyLeaderboardListItemTrophyNone";
+    var rankClass = "MoneyLeaderboardListItemRankTop";
+    if (rankID === 1) {
+      trophyClass = "MoneyLeaderboardListItemTrophyGold";
+    } else if (rankID === 2) {
+      trophyClass = "MoneyLeaderboardListItemTrophySilver";
+    } else if (rankID === 3) {
+      trophyClass = "MoneyLeaderboardListItemTrophyBronze";
+    } else {
+      rankClass = "MoneyLeaderboardListItemRankLower";
+    }
+    var avatarWithFrame, usernameWithColor;
+    return m("div", {
+      className: "MoneyLeaderboardListItemContainer"
+    }, m("div", {
+      "class": "MoneyLeaderboardListHeaderRank"
+    }, m("div", {
+      "class": rankClass
+    }, rankID), m("div", {
+      "class": trophyClass
+    }, m("i", {
+      "class": "fas fa-trophy"
+    }))), m("div", {
+      "class": "MoneyLeaderboardListHeaderUser"
+    }, m((flarum_components_Link__WEBPACK_IMPORTED_MODULE_2___default()), {
+      href: flarum_common_app__WEBPACK_IMPORTED_MODULE_5___default().route.user(leaderboardListItem),
+      className: "transferHistoryUser",
+      style: "color:var(--heading-color)"
+    }, flarum_helpers_username__WEBPACK_IMPORTED_MODULE_4___default()(leaderboardListItem))), m("div", {
+      "class": "MoneyLeaderboardListHeaderMoney"
+    }, moneyText));
+  };
+  return MoneyLeaderboardListItem;
+}((flarum_Component__WEBPACK_IMPORTED_MODULE_1___default()));
+
+
+/***/ }),
+
 /***/ "./src/common/components/MoneyLeaderboardWidget.js":
 /*!*********************************************************!*\
   !*** ./src/common/components/MoneyLeaderboardWidget.js ***!
@@ -20,6 +100,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var flarum_common_app__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(flarum_common_app__WEBPACK_IMPORTED_MODULE_2__);
 /* harmony import */ var flarum_common_components_LoadingIndicator__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! flarum/common/components/LoadingIndicator */ "flarum/common/components/LoadingIndicator");
 /* harmony import */ var flarum_common_components_LoadingIndicator__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(flarum_common_components_LoadingIndicator__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _MoneyBoardListItem__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./MoneyBoardListItem */ "./src/common/components/MoneyBoardListItem.js");
+
 
 
 
@@ -34,6 +116,7 @@ var MyWidget = /*#__PURE__*/function (_Widget) {
     var _this$moneyBoardList, _this$attrs$state, _this$attrs$state$isL, _this$attrs$state2, _this$attrs$state2$ha;
     _Widget.prototype.oninit.call(this, vnode);
     this.maxLoadCount = flarum_common_app__WEBPACK_IMPORTED_MODULE_2___default().forum.attribute("leaderboardMaxLoadCount") || 10;
+    this.initloadCount = 20;
     (_this$moneyBoardList = this.moneyBoardList) != null ? _this$moneyBoardList : this.moneyBoardList = [];
     this.totalLoadCount = 0;
     this.moreResults = false;
@@ -43,9 +126,6 @@ var MyWidget = /*#__PURE__*/function (_Widget) {
   };
   _proto.oncreate = function oncreate(vnode) {
     _Widget.prototype.oncreate.call(this, vnode);
-    if (!this.attrs.state.hasLoaded) {
-      setTimeout(this.load.bind(this), this.loadWithInitialResponse ? 0 : 800);
-    }
   };
   _proto.className = function className() {
     return 'cobbz-leaderboardWidget';
@@ -63,21 +143,17 @@ var MyWidget = /*#__PURE__*/function (_Widget) {
     return '';
   };
   _proto.content = function content() {
-    var _this = this;
     // 如果没有加载出来显示这个
-    if (this.attrs.state.isLoading) {
-      return m((flarum_common_components_LoadingIndicator__WEBPACK_IMPORTED_MODULE_3___default()), null);
-    }
     var rankID = 0;
+    var loading;
+    if (this.attrs.state.isLoading) {
+      loading = m((flarum_common_components_LoadingIndicator__WEBPACK_IMPORTED_MODULE_3___default()), null);
+    }
     return m("div", {
       className: "cobbz-money-board-widget"
     }, m("div", {
-      "class": "MoneyLeaderboardContainer"
+      "class": "MoneyBoardContainer"
     }, m("div", {
-      "class": "MoneyLeaderboardListTitle"
-    }, flarum_common_app__WEBPACK_IMPORTED_MODULE_2___default().translator.trans("cobbz-money-board-widget.forum.leaderboard-list-title")), this.additionalInfo && this.additionalInfo.length > 0 && m("p", {
-      "class": "MoneyLeaderboardListAdditionalInformation"
-    }, this.additionalInfo), m("div", {
       "class": "MoneyLeaderboardListHeader"
     }, m("div", {
       "class": "MoneyLeaderboardListHeaderRank"
@@ -91,22 +167,11 @@ var MyWidget = /*#__PURE__*/function (_Widget) {
       rankID++;
       return m("li", {
         "class": "MoneyLeaderboardListItems"
-      }, MoneyLeaderboardListItem.component({
+      }, _MoneyBoardListItem__WEBPACK_IMPORTED_MODULE_4__["default"].component({
         leaderboardListItem: leaderboardListItem,
         rankID: rankID
       }));
-    })), !this.loading && this.moneyLeaderboardList.length === 0 && m("div", null, m("div", {
-      style: "font-size:1.4em;color: var(--muted-more-color);text-align: center;height: 300px;line-height: 100px;"
-    }, flarum_common_app__WEBPACK_IMPORTED_MODULE_2___default().translator.trans("cobbz-money-board-widget.forum.leaderboard-list-empty"))), !loading && this.hasMoreResults() && m("div", {
-      style: "text-align:center;padding:20px"
-    }, m(Button, {
-      className: 'Button Button--primary',
-      disabled: this.loading,
-      loading: this.loading,
-      onclick: function onclick() {
-        return _this.loadMore();
-      }
-    }, flarum_common_app__WEBPACK_IMPORTED_MODULE_2___default().translator.trans('cobbz-money-board-widget.forum.leaderboard-load-more'))), loading && m("div", {
+    })), loading && m("div", {
       className: "MoneyLeaderboard-loadMore"
     }, loading)));
   };
@@ -216,6 +281,17 @@ flarum_forum_app__WEBPACK_IMPORTED_MODULE_0___default().initializers.add('cobbz/
 
 /***/ }),
 
+/***/ "flarum/Component":
+/*!**************************************************!*\
+  !*** external "flarum.core.compat['Component']" ***!
+  \**************************************************/
+/***/ ((module) => {
+
+"use strict";
+module.exports = flarum.core.compat['Component'];
+
+/***/ }),
+
 /***/ "flarum/common/app":
 /*!***************************************************!*\
   !*** external "flarum.core.compat['common/app']" ***!
@@ -235,6 +311,17 @@ module.exports = flarum.core.compat['common/app'];
 
 "use strict";
 module.exports = flarum.core.compat['common/components/LoadingIndicator'];
+
+/***/ }),
+
+/***/ "flarum/components/Link":
+/*!********************************************************!*\
+  !*** external "flarum.core.compat['components/Link']" ***!
+  \********************************************************/
+/***/ ((module) => {
+
+"use strict";
+module.exports = flarum.core.compat['components/Link'];
 
 /***/ }),
 
@@ -268,6 +355,28 @@ module.exports = flarum.core.compat['extensions/afrux-forum-widgets-core/common/
 
 "use strict";
 module.exports = flarum.core.compat['forum/app'];
+
+/***/ }),
+
+/***/ "flarum/helpers/avatar":
+/*!*******************************************************!*\
+  !*** external "flarum.core.compat['helpers/avatar']" ***!
+  \*******************************************************/
+/***/ ((module) => {
+
+"use strict";
+module.exports = flarum.core.compat['helpers/avatar'];
+
+/***/ }),
+
+/***/ "flarum/helpers/username":
+/*!*********************************************************!*\
+  !*** external "flarum.core.compat['helpers/username']" ***!
+  \*********************************************************/
+/***/ ((module) => {
+
+"use strict";
+module.exports = flarum.core.compat['helpers/username'];
 
 /***/ }),
 

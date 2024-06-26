@@ -1,0 +1,85 @@
+.cobbz-money-board-widget {
+  color: var(--primary-color);
+  text-align: center;
+
+  .MoneyLeaderboardListHeader {
+    display: flex;
+    font-weight: bold;
+    font-size: 13px;
+    // padding-top: 10px;
+  }
+
+  .MoneyLeaderboardListHeaderRank {
+    width: 20%;
+    position: relative;
+  }
+
+  .MoneyLeaderboardListHeaderUser {
+    width: 40%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space:nowrap;
+    a span {
+      color: var(--primary-color);
+    }
+  }
+
+  .MoneyLeaderboardListHeaderMoney {
+    width: 40%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space:nowrap;
+  }
+
+  .MoneyLeaderboardList {
+    margin: 0;
+    // padding: 0px 0px 20px 0px;
+    padding: 0;
+    list-style-type: none;
+    position: relative;
+  }
+
+  .MoneyLeaderboardListItems {
+    padding-top: 15px;
+  }
+
+  .MoneyLeaderboardListItemContainer {
+    display: flex;
+  }
+  .MoneyLeaderboardListItemRankTop {
+    font-weight: bold;
+    position: absolute;
+    left: 11px;
+    color: white;
+    z-index: 1;
+  }
+  .MoneyLeaderboardListItemRankLower {
+    position: absolute;
+    left: 11px;
+    top: 2px;
+    z-index: 1;
+  }
+  .MoneyLeaderboardListItemTrophyGold {
+    position: absolute;
+    top: -5px;
+    font-size: 26px;
+    color: gold;
+  }
+  .MoneyLeaderboardListItemTrophySilver {
+    position: absolute;
+    top: -5px;
+    font-size: 26px;
+    color: silver;
+  }
+
+  .MoneyLeaderboardListItemTrophyBronze {
+    position: absolute;
+    top: -5px;
+    font-size: 26px;
+    color: #cd7f32;
+  }
+
+  .MoneyLeaderboardListItemTrophyNone {
+    display: none;
+  }
+}
